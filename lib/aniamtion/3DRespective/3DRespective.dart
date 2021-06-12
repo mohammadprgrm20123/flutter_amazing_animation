@@ -1,60 +1,40 @@
 import 'package:flutter/widgets.dart';
+import 'package:flutter_module_animation/animation_widget.dart';
 import 'package:flutter_module_animation/models/aniamtion_parameters.dart';
+import 'package:flutter_module_animation/utils/utils.dart';
 
-class Respective3D extends StatefulWidget {
+class Respective3D extends AnimationWidget {
   AnimationParameters animationParameters;
-
-  Respective3D({required this.animationParameters});
-
-  @override
-  State<StatefulWidget> createState() {
-    return Respective3DState();
-  }
-}
-
-class Respective3DState extends State<Respective3D>
-    with SingleTickerProviderStateMixin {
-  late AnimationController _animationController;
   late Animation<double> rotateAnimation;
   late Animation<int> fadeInAnimation;
+  Respective3D({required this.animationParameters});
+
 
   @override
-  void initState() {
-    super.initState();
-    _animationController = AnimationController(
-        vsync: this, duration: widget.animationParameters.duration);
-    rotateAnimation =
-        new Tween<double>(begin: 0.0, end: 10.0).animate(_animationController);
-  }
+  Widget animatedBuilder(BuildContext context, AnimationController animationController) {
+    initAnimation(animationController);
 
-  @override
-  Widget build(BuildContext context) {
-    if (widget.animationParameters.play) {
-      _animationController.forward();
-      repeatAnimation();
+    if (animationParameters.play) {
+      animationController.forward();
+      Utils.repeatAnimation(animationParameters.repeat, animationController, animationParameters.reverse);
     }
     return AnimatedBuilder(
-        animation: _animationController,
+        animation: animationController,
         builder: (_, w) {
           print(rotateAnimation.value.toString());
           return Transform(
             transform: Matrix4.identity()
               ..rotateX(rotateAnimation.value)
-              ..rotateY(rotateAnimation.value)
-              ..rotateZ(rotateAnimation.value),
-            alignment: FractionalOffset.center,
-            child: widget.animationParameters.child,
-          );
-        });
-  }
 
-  void repeatAnimation() async {
-    for (int i = 0; i < widget.animationParameters.repeat; i++) {
-      await _animationController.forward();
-      if (widget.animationParameters.reverse)
-        await _animationController.reverse();
-      else
-        _animationController.reset();
-    }
+            alignment: FractionalOffset.center,
+            child: animationParameters.child,
+          );
+        });  }
+
+  @override
+  void initAnimation(AnimationController animationController) {
+    rotateAnimation =
+        new Tween<double>(begin: 0.0, end: 10.0).animate(animationController);
   }
 }
+

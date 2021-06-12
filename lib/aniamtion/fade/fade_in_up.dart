@@ -1,62 +1,47 @@
-
-
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_module_animation/models/aniamtion_parameters.dart';
-import 'package:flutter_module_animation/techniques.dart';
+import 'package:flutter_module_animation/utils/utils.dart';
 
+import '../../animation_widget.dart';
 
-class FadeInUp extends StatefulWidget{
-
+class FadeInUp extends AnimationWidget {
   AnimationParameters animationParameters;
-
-  FadeInUp({ required this.animationParameters});
-  @override
-  State<StatefulWidget> createState() {
-    return FadeInUpState();
-  }
-}
-
-
-class FadeInUpState extends State<FadeInUp> with SingleTickerProviderStateMixin{
-  late AnimationController _animationController;
   late Animation<double> fadeInAnimation;
   late Animation<Offset> offsetAnimation;
-  @override
-  void initState() {
-    super.initState();
-    _animationController = AnimationController(vsync: this,duration: widget.animationParameters.duration);
-    fadeInAnimation =new Tween<double>(begin:1.0,end:0.0).animate(_animationController);
-    offsetAnimation = new Tween<Offset>(begin: Offset.zero,end:  Offset(0.0,-1.2),
-    ).animate(_animationController);
 
-  }
+  FadeInUp({required this.animationParameters});
+
   @override
-  Widget build(BuildContext context){
-    if(widget.animationParameters.play){
-      _animationController.forward();
-      repeatAnimation();
+  Widget animatedBuilder(
+      BuildContext context, AnimationController animationController) {
+    initAnimation(animationController);
+
+    if (animationParameters.play) {
+      animationController.forward();
+      Utils.repeatAnimation(animationParameters.repeat, animationController,
+          animationParameters.reverse);
     }
 
-    print('build');
-    return AnimatedBuilder(animation: _animationController, builder: (_,w){
-      print(fadeInAnimation.value.toString());
-      return SlideTransition(
-          position: offsetAnimation,
-          child: Opacity(opacity: fadeInAnimation.value,child:widget.animationParameters.child ,));
-    });
+    return AnimatedBuilder(
+        animation: animationController,
+        builder: (_, w) {
+          return SlideTransition(
+              position: offsetAnimation,
+              child: Opacity(
+                opacity: fadeInAnimation.value,
+                child: animationParameters.child,
+              ));
+        });
   }
 
-  void repeatAnimation() async {
-    for(int i=0;i<=widget.animationParameters.repeat;i++){
-      await _animationController.forward();
-      if(widget.animationParameters.reverse)
-        await _animationController.reverse();
-      else
-        _animationController.reset();
-
-    }
-
+  @override
+  void initAnimation(AnimationController animationController) {
+    fadeInAnimation =
+        new Tween<double>(begin: 1.0, end: 0.0).animate(animationController);
+    offsetAnimation = new Tween<Offset>(
+      begin: Offset.zero,
+      end: Offset(0.0, -1.2),
+    ).animate(animationController);
   }
 }

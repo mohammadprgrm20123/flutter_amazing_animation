@@ -14,5 +14,10 @@ enum Techniques {
   FadeOutUp,
   Rotate,
   Respective3D,
+  flipRight,
+  RotateY,
+  RotateX,
+  Zoom,
+  BoxDecoration,
 
 }

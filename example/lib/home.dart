@@ -6,13 +6,14 @@ import 'package:flutter_module_animation/aniamtion/bounce/bounce_out.dart';
 import 'package:flutter_module_animation/aniamtion/bounce/bounce_right.dart';
 import 'package:flutter_module_animation/aniamtion/elastic/elasticIn.dart';
 import 'package:flutter_module_animation/aniamtion/elastic/elastic_left.dart';
-import 'package:flutter_module_animation/aniamtion/elastic/elastic_out.dart';
+
 import 'package:flutter_module_animation/aniamtion/fade/fade_in_down.dart';
 import 'package:flutter_module_animation/aniamtion/fade/fade_in_left.dart';
 import 'package:flutter_module_animation/aniamtion/fade/fade_in_right.dart';
 import 'package:flutter_module_animation/aniamtion/fade/fade_in_up.dart';
 import 'package:flutter_module_animation/aniamtion/zoom/zoom.dart';
 import 'package:flutter_module_animation/aniamtion/elastic/elastic_right.dart';
+import 'package:flutter_module_animation/aniamtion/elastic/elastic_out.dart';
 
 class HomeState extends State<Home> with SingleTickerProviderStateMixin {
   bool playFadeIn = false;

@@ -32,14 +32,14 @@ class BounceLeftState extends State<BounceLeft>
     super.initState();
 
     controller = AnimationController(
-        vsync: this, duration: Duration(milliseconds: 1500));
+        vsync: this, duration:  widget.duration);
 
     scale = Tween(begin: 1.0, end: 1.5).animate(CurvedAnimation(
       parent: controller,
-      curve: Curves.bounceIn,
+      curve: Curves.bounceIn
     ));
 
-    offSet = Tween<Offset>(begin: Offset.zero,end: Offset(0.1,0.0)).animate(controller);
+    offSet = Tween<Offset>(begin: Offset.zero,end: Offset(-0.3,0.0)).animate(controller);
   }
 
   @override

@@ -1,14 +1,18 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_module_animation/aniamtion/bounce/bounce_in.dart';
+import 'package:flutter_module_animation/aniamtion/bounce/bounce_left.dart';
+import 'package:flutter_module_animation/aniamtion/bounce/bounce_out.dart';
+import 'package:flutter_module_animation/aniamtion/bounce/bounce_right.dart';
+import 'package:flutter_module_animation/aniamtion/elastic/elasticIn.dart';
+import 'package:flutter_module_animation/aniamtion/elastic/elastic_left.dart';
+import 'package:flutter_module_animation/aniamtion/elastic/elastic_out.dart';
 import 'package:flutter_module_animation/aniamtion/fade/fade_in_down.dart';
+import 'package:flutter_module_animation/aniamtion/fade/fade_in_left.dart';
 import 'package:flutter_module_animation/aniamtion/fade/fade_in_right.dart';
 import 'package:flutter_module_animation/aniamtion/fade/fade_in_up.dart';
-import 'package:flutter_module_animation/aniamtion/fade/fade_in_left.dart';
 import 'package:flutter_module_animation/aniamtion/zoom/zoom.dart';
-import 'package:flutter_module_animation/aniamtion/bounce/bounce_in.dart';
-import 'package:flutter_module_animation/aniamtion/bounce/bounce_out.dart';
-import 'package:flutter_module_animation/aniamtion/icon/icon_aniamtion.dart';
-import 'package:flutter_module_animation/aniamtion/bounce/bounce_left.dart';
+import 'package:flutter_module_animation/aniamtion/elastic/elastic_right.dart';
 
 class HomeState extends State<Home> with SingleTickerProviderStateMixin {
   bool playFadeIn = false;
@@ -20,8 +24,7 @@ class HomeState extends State<Home> with SingleTickerProviderStateMixin {
   bool playRespective = false;
   bool play = false;
 
-
-   late AnimationController controller;
+  late AnimationController controller;
 
 
    @override
@@ -94,41 +97,152 @@ class HomeState extends State<Home> with SingleTickerProviderStateMixin {
                   duration: Duration(milliseconds: 1000),
                   reverse: true,
                 ),
+                const SizedBox(
+                  width: 50,
+                  height: 100,
+                ),
+                FadeInUp(
+                    repeat: 1,
+                    child: ElevatedButton(
+                      onPressed: () {},
+                      child: Text('FadeInUp'),
+                    ),
+                    play: play,
+                    duration: Duration(milliseconds: 1000),
+                    reverse: true),
+                const SizedBox(
+                  width: 50,
+                  height: 100,
+                ),
+                FadeInLeft(
+                    repeat: 1,
+                    child: ElevatedButton(
+                      onPressed: () {},
+                      child: Text('FadeInLeft'),
+                    ),
+                    play: play,
+                    duration: Duration(milliseconds: 1000),
+                    reverse: true),
+                const SizedBox(
+                  width: 50,
+                  height: 100,
+                ),
+                Zoom(
+                    repeat: 1,
+                    child: ElevatedButton(
+                      onPressed: () {},
+                      child: Text('Zoom'),
+                    ),
+                    play: play,
+                    duration: Duration(milliseconds: 1000),
+                    reverse: true),
+                const SizedBox(
+                  width: 50,
+                  height: 100,
+                ),
+                BounceIn(
+                    repeat: 1,
+                    child: ElevatedButton(
+                      onPressed: () {},
+                      child: Text('BounceIn'),
+                    ),
+                    play: play,
+                    duration: Duration(milliseconds: 200),
+                    reverse: true),
+                const SizedBox(
+                  width: 50,
+                  height: 100,
+                ),
+                BounceOut(
+                    repeat: 1,
+                    child: ElevatedButton(
+                      onPressed: () {},
+                      child: Text('BounceOut'),
+                    ),
+                    play: play,
+                    duration: Duration(milliseconds: 500),
+                    reverse: true),
+                const SizedBox(
+                  width: 50,
+                ),
+                const SizedBox(
+                  width: 50,
+                ),
+                BounceLeft(
+                    repeat: 1,
+                    child: ElevatedButton(
+                      onPressed: () {},
+                      child: Text('BounceLeft'),
+                    ),
+                    play: play,
+                    duration: Duration(milliseconds: 500),
+                    reverse: true),
+                const SizedBox(
+                  width: 50,
+                ),
+                BounceRight(
+                    repeat: 1,
+                    child: ElevatedButton(
+                      onPressed: () {},
+                      child: Text('BounceRight'),
+                    ),
+                    play: play,
+                    duration: Duration(milliseconds: 500),
+                    reverse: true),
+                space(),
+                ElasticIn(
+                    repeat: 1,
+                    child: ElevatedButton(
+                      onPressed: () {},
+                      child: Text('ElasticIn'),
+                    ),
+                    play: play,
+                    duration: Duration(milliseconds: 500),
+                    reverse: true),
+                space(),
+                ElasticOut(
+                    repeat: 1,
+                    child: ElevatedButton(
+                      onPressed: () {},
+                      child: Text('ElasticOut'),
+                    ),
+                    play: play,
+                    duration: Duration(milliseconds: 500),
+                    reverse: true),
+                space(),
+                ElasticLeft(
+                    repeat: 1,
+                    child: ElevatedButton(
+                      onPressed: () {},
+                      child: Text('ElasticLeft'),
+                    ),
+                    play: play,
+                    duration: Duration(milliseconds: 500),
+                    reverse: true),
 
-                const  SizedBox(width: 50,height: 100,),
 
-                FadeInUp(repeat: 1, child: ElevatedButton(onPressed: (){},child: Text('FadeInUp'),), play: play, duration: Duration(milliseconds: 1000), reverse: true),
-
-                const  SizedBox(width: 50,height: 100,),
-
-                FadeInLeft(repeat: 1, child: ElevatedButton(onPressed: (){},child: Text('FadeInLeft'),), play: play, duration: Duration(milliseconds: 1000), reverse: true),
-
-                const  SizedBox(width: 50,height: 100,),
-
-                Zoom(repeat: 1, child: ElevatedButton(onPressed: (){},child: Text('Zoom'),), play: play, duration: Duration(milliseconds: 1000), reverse: true),
-                const  SizedBox(width: 50,height: 100,),
-
-                BounceIn(repeat: 1, child: ElevatedButton(onPressed: (){},child: Text('BounceIn'),), play: play, duration: Duration(milliseconds: 200), reverse: true),
-
-
-                const  SizedBox(width: 50,height: 100,),
-
-
-                BounceOut(repeat: 1, child: ElevatedButton(onPressed: (){},child: Text('BounceOut'),), play: play, duration: Duration(milliseconds: 500), reverse: true),
-
-                const  SizedBox(width: 50,),
-                const  SizedBox(width: 50,),
-
-
-                BounceLeft(repeat: 1, child: ElevatedButton(onPressed: (){},child: Text('BounceLeft'),), play: play, duration: Duration(milliseconds: 500), reverse: true),
-
-
+                space(),
+                ElasticRight(
+                    repeat: 1,
+                    child: ElevatedButton(
+                      onPressed: () {},
+                      child: Text('ElasticRight'),
+                    ),
+                    play: play,
+                    duration: Duration(milliseconds: 500),
+                    reverse: true),
 
               ],
             ),
           ),
         ));
   }
+}
+
+Widget space() {
+  return SizedBox(
+    width: 100,
+  );
 }
 
 class Home extends StatefulWidget {
@@ -139,7 +253,6 @@ class Home extends StatefulWidget {
 }
 
 class StaggerAnimation extends StatelessWidget {
-
   final Animation<double> controller; // انیمیشن اصلی دریافت کننده کنترلر
   final Animation<double> opacity; // انیمیشن کنترل کننده میزان شفافیت
   final Animation<double> width; // انیمیشن کنترل کننده عرض ویجت

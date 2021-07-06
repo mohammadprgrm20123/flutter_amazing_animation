@@ -1,15 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_module_animation/models/aniamtion_parameters.dart';
 import 'package:flutter_module_animation/utils/utils.dart';
-
-import '../../animation_widget.dart';
-
-
-import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_module_animation/utils/utils.dart';
-
 
 class FadeInUp extends StatefulWidget {
 

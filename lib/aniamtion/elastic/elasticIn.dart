@@ -3,7 +3,7 @@ import 'package:flutter_module_animation/utils/utils.dart';
 import 'package:flutter/cupertino.dart';
 
 
-class Zoom extends StatefulWidget {
+class ElasticIn extends StatefulWidget {
 
 
   final Widget child;
@@ -11,16 +11,16 @@ class Zoom extends StatefulWidget {
   final bool play;
   final Duration duration;
   final bool reverse;
-  Zoom({required this.repeat,required this.child, required this.play, required this.duration, required this.reverse});
+  ElasticIn({required this.repeat,required this.child, required this.play, required this.duration, required this.reverse});
 
 
   @override
   State<StatefulWidget> createState() {
-    return ZoomState();
+    return ElasticInState();
   }
 }
 
-class ZoomState extends State<Zoom> with SingleTickerProviderStateMixin{
+class ElasticInState extends State<ElasticIn> with SingleTickerProviderStateMixin{
 
 
   late Animation<double> animationScale;
@@ -31,7 +31,7 @@ class ZoomState extends State<Zoom> with SingleTickerProviderStateMixin{
   void initState() {
     super.initState();
     animationController = new AnimationController(vsync: this,duration:widget.duration);
-    animationScale = Tween<double>(begin: 1.0,end:1.3).animate(animationController);
+    animationScale = Tween<double>(begin: 1.0,end:1.3).animate(CurvedAnimation(parent: animationController, curve: Curves.elasticIn));
 
   }
 
